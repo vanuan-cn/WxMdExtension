@@ -1,0 +1,88 @@
+#gzhmd-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #07c160;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  z-index: 999999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+#gzhmd-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+#gzhmd-panel {
+  position: fixed;
+  right: 24px;
+  top: 80px;
+  bottom: 24px;
+  width: 900px;
+  height: auto;
+  max-height: calc(100vh - 104px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+#gzhmd-header {
+  height: 44px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+
+#gzhmd-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+#gzhmd-header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+#gzhmd-header button:hover {
+  color: #333;
+}
+
+#gzhmd-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+@media (max-width: 1024px) {
+  #gzhmd-panel {
+    width: calc(100vw - 48px);
+    height: 500px;
+  }
+}

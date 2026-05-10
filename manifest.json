@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "WxMdExtension",
+  "version": "1.0.0",
+  "description": "在微信公众号编辑页面启用 Markdown 编辑模式，支持实时预览和一键插入",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://mp.weixin.qq.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mp.weixin.qq.com/cgi-bin/appmsg*",
+        "https://mp.weixin.qq.com/cgi-bin/newappmsg*",
+        "https://mp.weixin.qq.com/cgi-bin/home?*",
+        "https://mp.weixin.qq.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["editor.html", "editor.js", "editor.css"],
+      "matches": ["https://mp.weixin.qq.com/*"]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_title": "公众号 Markdown 编辑器",
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WxMdExtension</title>
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <div id="app">
+    <div id="toolbar">
+      <div class="toolbar-row">
+        <button data-cmd="h1" title="标题 1">H1</button>
+        <button data-cmd="h2" title="标题 2">H2</button>
+        <button data-cmd="h3" title="标题 3">H3</button>
+        <span class="sep"></span>
+        <button data-cmd="bold" title="粗体"><b>B</b></button>
+        <button data-cmd="italic" title="斜体"><i>I</i></button>
+        <button data-cmd="code" title="行内代码">&lt;/&gt;</button>
+        <button data-cmd="pre" title="代码块">{}</button>
+        <span class="sep"></span>
+        <button data-cmd="link" title="链接">🔗</button>
+        <button data-cmd="image" title="图片">🖼️</button>
+        <button data-cmd="quote" title="引用">"</button>
+        <button data-cmd="ul" title="无序列表">•</button>
+        <button data-cmd="ol" title="有序列表">1.</button>
+        <button data-cmd="table" title="表格">▦</button>
+        <span class="sep"></span>
+        <button data-cmd="hr" title="分割线">—</button>
+      </div>
+      <div class="toolbar-row toolbar-row-2">
+        <button id="btn-import" title="导入 Markdown 文件">📂 导入</button>
+        <button id="btn-export" title="导出 Markdown 文件">💾 导出</button>
+        <span class="sep"></span>
+        <button id="btn-preview-only" title="切换纯预览">👁</button>
+        <span class="sep"></span>
+        <span class="theme-label">主题：</span>
+        <select id="preview-theme" title="预览主题">
+          <option value="theme-default">微信排版</option>
+          <option value="theme-minimal">极简</option>
+          <option value="theme-elegant">优雅</option>
+          <option value="theme-wemd-morandi">WeMD 莫兰迪</option>
+          <option value="theme-wemd-gold">WeMD 黑金</option>
+          <option value="theme-wemd-academic">WeMD 学术</option>
+        </select>
+        <span class="flex"></span>
+        <button id="btn-insert" class="primary" title="插入到公众号 (Ctrl+Enter)">插入到公众号</button>
+        <span class="sep"></span>
+        <a class="toolbar-link" href="https://github.com/vanuan-cn/WxMdExtension" target="_blank" rel="noopener" title="GitHub 点赞">⭐</a>
+        <button id="btn-reward" title="打赏鼓励"><span class="heart-beat">♥</span></button>
+        <input type="file" id="file-input" accept=".md,.markdown,.txt" style="display:none">
+      </div>
+    </div>
+    <div id="editor-area">
+      <div id="input-pane">
+        <textarea id="md-input" placeholder="在此输入 Markdown...
+
+# 标题
+**粗体** *斜体* `代码`
+
+- 列表项
+- 列表项
+
+> 引用
+
+| 表头 | 表头 |
+|------|------|
+| 内容 | 内容 |"></textarea>
+      </div>
+      <div id="resizer" title="拖拽调整宽度"></div>
+      <div id="preview-pane">
+        <div id="preview-title">预览</div>
+        <div id="preview"></div>
+      </div>
+    </div>
+    <div id="status-bar">
+      <span id="status-msg">就绪</span>
+      <span id="word-count">0 字</span>
+    </div>
+  </div>
+
+  <!-- Reward Modal -->
+  <div id="reward-modal" class="hidden">
+    <div class="reward-overlay"></div>
+    <div class="reward-box">
+      <button class="reward-close" title="关闭">✕</button>
+      <div class="reward-title">☕ 请开发者喝杯咖啡</div>
+      <img src="zsm.png" alt="赞赏码" class="reward-img">
+      <div class="reward-desc">感谢您的支持！</div>
+    </div>
+  </div>
+
+  <script src="editor.js"></script>
+</body>
+</html>
