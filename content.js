@@ -154,7 +154,7 @@
       'a', 'img', 'blockquote', 'pre', 'code',
       'ul', 'ol', 'li', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'hr'
     ]);
-    const allowedAttrs = new Set(['href', 'src', 'alt', 'title', 'style']);
+    const allowedAttrs = new Set(['href', 'src', 'alt', 'title', 'style', 'class']);
     const parser = new DOMParser();
     const doc = parser.parseFromString('<div>' + html + '</div>', 'text/html');
     const root = doc.body.firstChild;

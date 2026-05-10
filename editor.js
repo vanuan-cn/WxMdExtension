@@ -280,7 +280,10 @@
   }
 
   function generateExportHtml(src) {
-    return parseMarkdown(src, 'export');
+    const html = parseMarkdown(src, 'export');
+    const theme = previewThemeSelect ? previewThemeSelect.value : 'theme-default';
+    // Inject theme class into the export wrapper so paste/insert retains theme styling
+    return html.replace('<div style=', `<div class="gzhmd-content ${theme}" style=`);
   }
 
   // ===== Theme Management =====
