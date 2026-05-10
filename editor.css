@@ -1015,6 +1015,344 @@ html, body {
   border: 1px solid #ddd;
 }
 
+/* ================= Theme: WeMD Laser Glass ================= */
+#preview.theme-wemd-laser {
+  font-family: "SF Mono", "Fira Code", "PingFang SC", "Microsoft YaHei", monospace;
+  color: #c8d6e5;
+  background: #0a0e1a;
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 24px;
+  border-radius: 8px;
+}
+#preview.theme-wemd-laser h1 {
+  margin: 40px 0 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #00d4ff;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.4), 0 0 24px rgba(0, 212, 255, 0.2);
+  letter-spacing: 2px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  padding-bottom: 16px;
+}
+#preview.theme-wemd-laser h2 {
+  margin: 32px 0 16px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #a78bfa;
+  text-shadow: 0 0 8px rgba(167, 139, 250, 0.35);
+  border-left: 4px solid #a78bfa;
+  padding-left: 12px;
+  letter-spacing: 1px;
+}
+#preview.theme-wemd-laser h3 {
+  margin: 24px 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.3);
+}
+#preview.theme-wemd-laser h4 {
+  margin: 18px 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f472b6;
+  text-shadow: 0 0 6px rgba(244, 114, 182, 0.3);
+}
+#preview.theme-wemd-laser p {
+  margin: 14px 0;
+  line-height: 1.8;
+  color: #c8d6e5;
+  font-size: 15px;
+}
+#preview.theme-wemd-laser strong {
+  color: #f472b6;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(244, 114, 182, 0.25);
+}
+#preview.theme-wemd-laser em {
+  color: #a78bfa;
+  font-style: italic;
+}
+#preview.theme-wemd-laser del {
+  text-decoration: line-through;
+  color: #64748b;
+}
+#preview.theme-wemd-laser a {
+  color: #22d3ee;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.4);
+  transition: border-color 0.2s;
+}
+#preview.theme-wemd-laser blockquote {
+  margin: 20px 0;
+  padding: 14px 18px;
+  background: rgba(30, 41, 59, 0.6);
+  border-left: 3px solid #00d4ff;
+  border-radius: 0 8px 8px 0;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.7;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.08);
+}
+#preview.theme-wemd-laser blockquote p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.7;
+}
+#preview.theme-wemd-laser ul,
+#preview.theme-wemd-laser ol {
+  padding-left: 20px;
+  margin: 14px 0;
+  color: #94a3b8;
+}
+#preview.theme-wemd-laser li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  color: #c8d6e5;
+}
+#preview.theme-wemd-laser ul ul {
+  list-style-type: circle;
+  color: #a78bfa;
+  margin-top: 4px;
+}
+#preview.theme-wemd-laser ol ol {
+  list-style-type: lower-alpha;
+  color: #38bdf8;
+}
+#preview.theme-wemd-laser code {
+  color: #38bdf8;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 2px 6px;
+  margin: 0 3px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+#preview.theme-wemd-laser pre {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.06);
+}
+#preview.theme-wemd-laser pre code {
+  color: #c8d6e5;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+#preview.theme-wemd-laser table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+#preview.theme-wemd-laser th,
+#preview.theme-wemd-laser td {
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  padding: 10px;
+  color: #c8d6e5;
+}
+#preview.theme-wemd-laser th {
+  background: rgba(30, 41, 59, 0.8);
+  color: #00d4ff;
+  font-weight: 700;
+  text-align: left;
+}
+#preview.theme-wemd-laser tr:nth-child(even) {
+  background: rgba(30, 41, 59, 0.3);
+}
+#preview.theme-wemd-laser hr {
+  margin: 32px auto;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+  width: 70%;
+}
+#preview.theme-wemd-laser img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+/* ================= Theme: WeMD Sunset Film ================= */
+#preview.theme-wemd-sunset {
+  font-family: "Songti SC", "SimSun", "STSong", "Georgia", serif;
+  color: #4a2c2a;
+  background: #fff8f0;
+  font-size: 16px;
+  line-height: 1.85;
+  padding: 24px;
+  border-radius: 4px;
+}
+#preview.theme-wemd-sunset h1 {
+  margin: 40px 0 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: normal;
+  color: #c44536;
+  letter-spacing: 3px;
+  border-bottom: 2px solid #e8a87c;
+  padding-bottom: 16px;
+}
+#preview.theme-wemd-sunset h2 {
+  margin: 30px 0 16px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #d4654a;
+  border-left: 4px solid #d4654a;
+  padding-left: 12px;
+  letter-spacing: 1px;
+}
+#preview.theme-wemd-sunset h3 {
+  margin: 24px 0 12px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #8b5e3c;
+  border-bottom: 1px dashed #d4a574;
+  padding-bottom: 6px;
+  display: inline-block;
+}
+#preview.theme-wemd-sunset h4 {
+  margin: 18px 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #a0522d;
+}
+#preview.theme-wemd-sunset p {
+  margin: 14px 0;
+  line-height: 1.85;
+  color: #4a2c2a;
+  font-size: 16px;
+  text-align: justify;
+}
+#preview.theme-wemd-sunset strong {
+  color: #b7410e;
+  font-weight: 700;
+}
+#preview.theme-wemd-sunset em {
+  color: #a0522d;
+  font-style: italic;
+}
+#preview.theme-wemd-sunset del {
+  text-decoration: line-through;
+  color: #a1887f;
+}
+#preview.theme-wemd-sunset a {
+  color: #c44536;
+  text-decoration: none;
+  border-bottom: 1px solid #e8a87c;
+}
+#preview.theme-wemd-sunset blockquote {
+  margin: 20px 0;
+  padding: 14px 18px;
+  background: #fdf0e4;
+  border-left: 3px solid #d4654a;
+  border-radius: 0 6px 6px 0;
+  color: #6d4c41;
+  font-size: 15px;
+  line-height: 1.7;
+}
+#preview.theme-wemd-sunset blockquote p {
+  margin: 0;
+  color: #6d4c41;
+  font-size: 15px;
+  line-height: 1.7;
+}
+#preview.theme-wemd-sunset ul,
+#preview.theme-wemd-sunset ol {
+  padding-left: 20px;
+  margin: 14px 0;
+  color: #8b5e3c;
+}
+#preview.theme-wemd-sunset li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  color: #4a2c2a;
+}
+#preview.theme-wemd-sunset ul ul {
+  list-style-type: circle;
+  color: #d4654a;
+  margin-top: 4px;
+}
+#preview.theme-wemd-sunset ol ol {
+  list-style-type: lower-alpha;
+  color: #a0522d;
+}
+#preview.theme-wemd-sunset code {
+  color: #a0522d;
+  background: #fdf0e4;
+  border: 1px solid #e8c9a0;
+  padding: 2px 6px;
+  margin: 0 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: "Courier New", Courier, monospace;
+}
+#preview.theme-wemd-sunset pre {
+  background: #fdf0e4;
+  border: 1px solid #e8c9a0;
+  border-radius: 6px;
+  padding: 16px;
+}
+#preview.theme-wemd-sunset pre code {
+  color: #4a2c2a;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: "Courier New", Courier, monospace;
+}
+#preview.theme-wemd-sunset table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  border: 1px solid #e8c9a0;
+}
+#preview.theme-wemd-sunset th,
+#preview.theme-wemd-sunset td {
+  border: 1px solid #e8c9a0;
+  padding: 10px;
+  color: #4a2c2a;
+}
+#preview.theme-wemd-sunset th {
+  background: #fdf0e4;
+  color: #c44536;
+  font-weight: 700;
+  text-align: left;
+}
+#preview.theme-wemd-sunset tr:nth-child(even) {
+  background: #fffbf5;
+}
+#preview.theme-wemd-sunset hr {
+  margin: 32px auto;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e8a87c, transparent);
+  width: 60%;
+}
+#preview.theme-wemd-sunset img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border-radius: 4px;
+  border: 1px solid #e8c9a0;
+  box-shadow: 0 4px 12px rgba(196, 69, 54, 0.1);
+}
+
 /* ================= Heart Beat ================= */
 .heart-beat {
   display: inline-block;
