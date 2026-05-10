@@ -282,8 +282,140 @@
   function generateExportHtml(src) {
     const html = parseMarkdown(src, 'export');
     const theme = previewThemeSelect ? previewThemeSelect.value : 'theme-default';
-    // Inject theme class into the export wrapper so paste/insert retains theme styling
-    return html.replace('<div style=', `<div class="gzhmd-content ${theme}" style=`);
+
+    if (theme === 'theme-default') {
+      return html.replace('<div style=', `<div class="gzhmd-content ${theme}" style=`);
+    }
+
+    // 创建临时 DOM 来计算并内联主题样式
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.left = '-9999px';
+    container.style.top = '0';
+    container.style.visibility = 'hidden';
+    container.innerHTML = html;
+    document.body.appendChild(container);
+
+    const wrapper = container.querySelector('div');
+    wrapper.className = `gzhmd-content ${theme}`;
+
+    const props = [
+      'color', 'background-color', 'background-image',
+      'font-family', 'font-size', 'line-height', 'font-weight', 'font-style',
+      'text-align', 'letter-spacing', 'text-transform', 'text-decoration',
+      'text-shadow',
+      'margin-top', 'margin-bottom', 'margin-left', 'margin-right',
+      'padding-top', 'padding-bottom', 'padding-left', 'padding-right',
+      'border-top', 'border-bottom', 'border-left', 'border-right',
+      'border-radius',
+      'box-shadow', 'list-style-type', 'display', 'max-width',
+      'overflow', 'overflow-x', 'white-space', 'word-break',
+      'min-height', 'opacity', 'float', 'clear'
+    ];
+
+    function isMeaningful(val) {
+      if (!val) return false;
+      const skip = new Set([
+        'none', 'normal', 'auto', '0px', 'rgba(0, 0, 0, 0)', 'transparent', '',
+        '0s', 'medium', 'baseline', '0', 'static', 'stretch', 'start',
+        'running', 'visible',
+        '1', '100%', '0%', 'repeat', 'scroll', 'padding-box',
+        'border-box', 'separate', 'lr-tb', 'mixed', 'flat', 'ease', 'all'
+      ]);
+      if (skip.has(val)) return false;
+      // 过滤无意义的 border（宽度为0）
+      if (val.startsWith('0px ')) return false;
+      // 过滤 background shorthand 的默认值模式
+      if (val.includes('/ auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)')) return false;
+      return true;
+    }
+
+    function saveStyles(el, map) {
+      map.set(el, el.getAttribute('style') || '');
+      for (const child of Array.from(el.children)) saveStyles(child, map);
+    }
+
+    function restoreStyles(el, map) {
+      const style = map.get(el);
+      if (style) el.setAttribute('style', style);
+      else el.removeAttribute('style');
+      for (const child of Array.from(el.children)) restoreStyles(child, map);
+    }
+
+    function removeAllInlineStyles(el) {
+      el.removeAttribute('style');
+      for (const child of Array.from(el.children)) removeAllInlineStyles(child);
+    }
+
+    function collectComputed(el, map) {
+      const computed = window.getComputedStyle(el);
+      const vals = {};
+      for (const p of props) vals[p] = computed.getPropertyValue(p);
+      map.set(el, vals);
+      for (const child of Array.from(el.children)) collectComputed(child, map);
+    }
+
+    const styleMap = new Map();
+    saveStyles(wrapper, styleMap);
+
+    // 状态 A：当前主题 + 保留 inline style
+    const stateA = new Map();
+    collectComputed(wrapper, stateA);
+
+    // 移除所有 inline style
+    removeAllInlineStyles(wrapper);
+
+    // 状态 B：默认主题 + 无 inline style
+    wrapper.className = 'gzhmd-content theme-default';
+    const stateB = new Map();
+    collectComputed(wrapper, stateB);
+
+    // 状态 C：当前主题 + 无 inline style
+    wrapper.className = `gzhmd-content ${theme}`;
+    const stateC = new Map();
+    collectComputed(wrapper, stateC);
+
+    // 恢复 inline style
+    restoreStyles(wrapper, styleMap);
+    wrapper.className = `gzhmd-content ${theme}`;
+
+    function applyMergedStyles(el) {
+      const a = stateA.get(el); // 当前主题 + inline
+      const b = stateB.get(el); // 默认主题 + 无 inline
+      const c = stateC.get(el); // 当前主题 + 无 inline
+      if (!a || !b || !c) return;
+
+      let finalStyle = '';
+      for (const p of props) {
+        const cv = c[p]; // 当前主题无 inline 时的值
+        const bv = b[p]; // 默认主题无 inline 时的值
+        const av = a[p]; // 当前主题有 inline 时的值
+
+        if (cv !== bv && isMeaningful(cv)) {
+          // 主题 CSS 有意修改这个属性，优先使用主题值
+          finalStyle += `${p}: ${cv}; `;
+        } else if (av !== cv && av !== bv && isMeaningful(av)) {
+          // inline style 有意修改（既不同于主题也不同于默认），保留
+          finalStyle += `${p}: ${av}; `;
+        }
+      }
+
+      if (finalStyle) {
+        el.setAttribute('style', finalStyle.trim());
+      } else {
+        el.removeAttribute('style');
+      }
+
+      for (const child of Array.from(el.children)) {
+        applyMergedStyles(child);
+      }
+    }
+
+    applyMergedStyles(wrapper);
+
+    const result = wrapper.outerHTML;
+    document.body.removeChild(container);
+    return result;
   }
 
   // ===== Theme Management =====
